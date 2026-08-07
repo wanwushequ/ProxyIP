@@ -40,7 +40,7 @@ jobs:
           GROUPS = {
               "US": {
                   "country": "US",
-                  "airports": ["SJC", "LAX"],
+                  "airports": ["SJC", "LAX", "DFW", "IAD", "EWR"],
                   "file": "US.txt",
                   "domain": "us.bestcf.eu.cc",
                   "ports": ["443"],
@@ -157,7 +157,7 @@ jobs:
               },
               "CA": {
                   "country": "CA",
-                  "airports": ["ORD", "YYZ"],
+                  "airports": ["YYZ", "YVR"],
                   "file": "CA.txt",
                   "domain": "ca.bestcf.eu.cc",
                   "ports": ["443"],
