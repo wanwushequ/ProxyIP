@@ -44,7 +44,7 @@ jobs:
                   "file": "US.txt",
                   "domain": "us.bestcf.eu.cc",
                   "ports": ["443"],
-                  "min_speed": 3.00,
+                  "min_speed": 2.00,
                   "require_meta_match": True
               },
               "JP": {
@@ -53,7 +53,7 @@ jobs:
                   "file": "JP.txt",
                   "domain": "jp.bestcf.eu.cc",
                   "ports": ["443"],
-                  "min_speed": 3.00,
+                  "min_speed": 2.00,
                   "require_meta_match": True
               },
               "HK": {
@@ -71,7 +71,7 @@ jobs:
                   "file": "DE.txt",
                   "domain": "de.bestcf.eu.cc",
                   "ports": ["443"],
-                  "min_speed": 3.00,
+                  "min_speed": 2.00,
                   "require_meta_match": True
               },
               "TW": {
@@ -98,7 +98,7 @@ jobs:
                   "file": "NL.txt",
                   "domain": "nl.bestcf.eu.cc",
                   "ports": ["443"],
-                  "min_speed": 3.00,
+                  "min_speed": 2.00,
                   "require_meta_match": True
               },
               "SG": {
