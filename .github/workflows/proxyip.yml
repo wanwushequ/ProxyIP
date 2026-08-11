@@ -82,7 +82,7 @@ jobs:
                   "file": "TW.txt",
                   "domain_prefix": "tw",
                   "ports": ["443"],
-                  "min_speed": 1.50,
+                  "min_speed": 1.20,
                   "require_meta_match": True
               },
               "KR": {
@@ -91,7 +91,7 @@ jobs:
                   "file": "KR.txt",
                   "domain_prefix": "kr",
                   "ports": ["443"],
-                  "min_speed": 1.50,
+                  "min_speed": 1.80,
                   "require_meta_match": True
               },
               "NL": {
