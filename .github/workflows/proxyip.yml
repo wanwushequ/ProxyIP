@@ -64,7 +64,7 @@ jobs:
                   "file": "HK.txt",
                   "domain_prefix": "hk",
                   "ports": ["443"],
-                  "min_speed": 2.00,
+                  "min_speed": 1.50,
                   "require_meta_match": True
               },
               "DE": {
@@ -82,7 +82,7 @@ jobs:
                   "file": "TW.txt",
                   "domain_prefix": "tw",
                   "ports": ["443"],
-                  "min_speed": 2.00,
+                  "min_speed": 1.50,
                   "require_meta_match": True
               },
               "KR": {
@@ -91,7 +91,7 @@ jobs:
                   "file": "KR.txt",
                   "domain_prefix": "kr",
                   "ports": ["443"],
-                  "min_speed": 2.00,
+                  "min_speed": 1.50,
                   "require_meta_match": True
               },
               "NL": {
@@ -163,7 +163,7 @@ jobs:
                   "file": "CA.txt",
                   "domain_prefix": "ca",
                   "ports": ["443"],
-                  "min_speed": 2.00,
+                  "min_speed": 1.50,
                   "require_meta_match": True
               }
           }
