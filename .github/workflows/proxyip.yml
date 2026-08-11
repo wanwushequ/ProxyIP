@@ -1,0 +1,350 @@
+name: PROXYIP
+
+on:
+  schedule:
+    - cron: '0 */1 * * *'  # 每小时自动运行一次
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  process-and-push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Process CSV and Update Cloudflare DNS
+        env:
+          CF_ZONE_ID: ${{ secrets.CF_ZONE_ID }}
+          CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+          CF_DOMAIN: ${{ secrets.CF_DOMAIN }}
+        run: |
+          cat << 'EOF' > process.py
+          import csv
+          import json
+          import os
+          import urllib.request
+          import urllib.error
+
+          CSV_URL = "https://raw.githubusercontent.com/xgonce/Cloudflare_IP/refs/heads/main/result.csv"
+
+          # 从环境变量获取基础域名（如: bestcf.eu.cc 或 example.com）
+          BASE_DOMAIN = os.environ.get("CF_DOMAIN", "").strip().strip(".")
+
+          # 各国家/地区分组及规则配置
+          GROUPS = {
+              "US": {
+                  "country": "US",
+                  "airports": ["SJC", "LAX", "DFW", "IAD", "EWR"],
+                  "file": "US.txt",
+                  "domain_prefix": "us",
+                  "ports": ["443"],
+                  "min_speed": 2.00,
+                  "require_meta_match": True
+              },
+              "JP": {
+                  "country": "JP",
+                  "airports": ["NRT"],
+                  "file": "JP.txt",
+                  "domain_prefix": "jp",
+                  "ports": ["443"],
+                  "min_speed": 2.00,
+                  "require_meta_match": True
+              },
+              "HK": {
+                  "country": "HK",
+                  "airports": ["HKG"],
+                  "file": "HK.txt",
+                  "domain_prefix": "hk",
+                  "ports": ["443"],
+                  "min_speed": 2.00,
+                  "require_meta_match": True
+              },
+              "DE": {
+                  "country": "DE",
+                  "airports": ["FRA"],
+                  "file": "DE.txt",
+                  "domain_prefix": "de",
+                  "ports": ["443"],
+                  "min_speed": 2.00,
+                  "require_meta_match": True
+              },
+              "TW": {
+                  "country": "TW",
+                  "airports": ["TPE"],
+                  "file": "TW.txt",
+                  "domain_prefix": "tw",
+                  "ports": ["443"],
+                  "min_speed": 2.00,
+                  "require_meta_match": True
+              },
+              "KR": {
+                  "country": "KR",
+                  "airports": ["ICN"],
+                  "file": "KR.txt",
+                  "domain_prefix": "kr",
+                  "ports": ["443"],
+                  "min_speed": 2.00,
+                  "require_meta_match": True
+              },
+              "NL": {
+                  "country": "NL",
+                  "airports": ["AMS"],
+                  "file": "NL.txt",
+                  "domain_prefix": "nl",
+                  "ports": ["443"],
+                  "min_speed": 2.00,
+                  "require_meta_match": True
+              },
+              "SG": {
+                  "country": "SG",
+                  "airports": ["SIN"],
+                  "file": "SG.txt",
+                  "domain_prefix": "sg",
+                  "ports": ["443"],
+                  "min_speed": 1.50,
+                  "require_meta_match": True
+              },
+              "FR": {
+                  "country": "FR",
+                  "airports": ["CDG"],
+                  "file": "FR.txt",
+                  "domain_prefix": "fr",
+                  "ports": ["443"],
+                  "min_speed": 2.00,
+                  "require_meta_match": True
+              },
+              "GB": {
+                  "country": "GB",
+                  "airports": ["LHR"],
+                  "file": "GB.txt",
+                  "domain_prefix": "gb",
+                  "ports": ["443"],
+                  "min_speed": 2.00,
+                  "require_meta_match": True
+              },
+              "FI": {
+                  "country": "FI",
+                  "airports": ["ARN", "HEL", "TLL"],
+                  "file": "FI.txt",
+                  "domain_prefix": "fi",
+                  "ports": ["443"],
+                  "min_speed": 2.00,
+                  "require_meta_match": True
+              },
+              "PL": {
+                  "country": "PL",
+                  "airports": ["WAW"],
+                  "file": "PL.txt",
+                  "domain_prefix": "pl",
+                  "ports": ["443"],
+                  "min_speed": 2.00,
+                  "require_meta_match": True
+              },
+              "LV": {
+                  "country": "LV",
+                  "airports": ["ARN", "RIX", "VNO"],
+                  "file": "LV.txt",
+                  "domain_prefix": "lv",
+                  "ports": ["443"],
+                  "min_speed": 2.00,
+                  "require_meta_match": True
+              },
+              "CA": {
+                  "country": "CA",
+                  "airports": ["YYZ", "YVR"],
+                  "file": "CA.txt",
+                  "domain_prefix": "ca",
+                  "ports": ["443"],
+                  "min_speed": 2.00,
+                  "require_meta_match": True
+              }
+          }
+
+          def is_ipv4(ip_str):
+              return ":" not in ip_str and ip_str.count(".") == 3
+
+          def fetch_raw_csv_data():
+              """下载并解析原始 CSV 数据"""
+              req = urllib.request.Request(CSV_URL, headers={'User-Agent': 'Mozilla/5.0'})
+              with urllib.request.urlopen(req, timeout=30) as resp:
+                  content = resp.read().decode('utf-8-sig', errors='ignore')
+
+              lines = content.splitlines()
+              reader = csv.DictReader(lines)
+              
+              if reader.fieldnames:
+                  reader.fieldnames = [f.strip() for f in reader.fieldnames if f]
+
+              rows = []
+              for row in reader:
+                  ip = row.get("IP", "").strip()
+                  cf_meta_ip = row.get("cf-meta-ip", "").strip()
+                  port = row.get("端口", "").strip()
+                  speed_str = row.get("速度(Mbps)", "0").strip()
+                  country = row.get("CF归属国", "").strip()
+                  datacenter = row.get("机房", "").strip()
+                  tls_delay_str = row.get("TLS延迟(ms)", "999999").strip()
+
+                  try:
+                      speed = float(speed_str)
+                  except ValueError:
+                      speed = 0.0
+
+                  try:
+                      tls_delay = float(tls_delay_str)
+                  except ValueError:
+                      tls_delay = 999999.0
+
+                  rows.append({
+                      "ip": ip,
+                      "cf_meta_ip": cf_meta_ip,
+                      "port": port,
+                      "speed": speed,
+                      "country": country,
+                      "datacenter": datacenter,
+                      "tls_delay": tls_delay
+                  })
+              return rows
+
+          def filter_rows_for_group(all_rows, group_cfg):
+              """筛选满足特定条件的 IP 列表"""
+              country = group_cfg["country"]
+              airports = group_cfg["airports"]
+              ports = group_cfg.get("ports", ["443"])
+              min_speed = group_cfg.get("min_speed", 5.00)
+              require_meta_match = group_cfg.get("require_meta_match", True)
+
+              matched = []
+              for r in all_rows:
+                  ip = r["ip"]
+
+                  if not ip or not is_ipv4(ip):
+                      continue
+                  if r["country"] != country or r["datacenter"] not in airports:
+                      continue
+                  if require_meta_match and ip != r["cf_meta_ip"]:
+                      continue
+                  if r["port"] not in ports:
+                      continue
+                  if r["speed"] <= min_speed:
+                      continue
+
+                  matched.append(r)
+
+              # 按速度从大到小（降序）排序；速度相同时按 TLS 延迟从小到大（升序）排序
+              matched.sort(key=lambda x: (-x["speed"], x["tls_delay"]))
+              return matched
+
+          def push_to_cloudflare(domain, ip_list, max_push=10):
+              """清理现有域名 A 记录并写入最新的前 N 个高带宽 IP"""
+              zone_id = os.environ.get("CF_ZONE_ID")
+              api_token = os.environ.get("CF_API_TOKEN")
+
+              if not zone_id or not api_token:
+                  print(f"[跳过 CF 更新] 缺失 CF_ZONE_ID 或 CF_API_TOKEN 环境变量 ({domain})")
+                  return
+
+              if not ip_list:
+                  print(f"[跳过 CF 更新] {domain} 无有效 IP")
+                  return
+
+              push_ips = ip_list[:max_push]
+              headers = {
+                  "Authorization": f"Bearer {api_token}",
+                  "Content-Type": "application/json"
+              }
+
+              try:
+                  # 1. 获取现有 A 记录
+                  url = f"https://api.cloudflare.com/client/v4/zones/{zone_id}/dns_records?name={domain}&type=A"
+                  req = urllib.request.Request(url, headers=headers)
+                  with urllib.request.urlopen(req, timeout=15) as response:
+                      res_data = json.loads(response.read().decode('utf-8'))
+                      existing_records = res_data.get("result", [])
+
+                  # 2. 删除原有 A 记录
+                  for rec in existing_records:
+                      del_url = f"https://api.cloudflare.com/client/v4/zones/{zone_id}/dns_records/{rec['id']}"
+                      del_req = urllib.request.Request(del_url, headers=headers, method="DELETE")
+                      with urllib.request.urlopen(del_req, timeout=15):
+                          pass
+
+                  # 3. 添加最新的 A 记录 (仅 DNS 解析)
+                  create_url = f"https://api.cloudflare.com/client/v4/zones/{zone_id}/dns_records"
+                  for ip in push_ips:
+                      payload = {
+                          "type": "A",
+                          "name": domain,
+                          "content": ip,
+                          "ttl": 60,
+                          "proxied": False
+                      }
+                      cr_req = urllib.request.Request(
+                          create_url,
+                          data=json.dumps(payload).encode('utf-8'),
+                          headers=headers,
+                          method="POST"
+                      )
+                      with urllib.request.urlopen(cr_req, timeout=15):
+                          pass
+
+                  print(f"成功为 {domain} 更新了 {len(push_ips)} 条 A 记录解析")
+
+              except Exception as e:
+                  print(f"[错误] Cloudflare API 更新失败 ({domain}): {e}")
+
+          def main():
+              all_rows = fetch_raw_csv_data()
+              print(f"已获取原始节点数据：{len(all_rows)} 条")
+
+              updated_count = 0
+
+              for group_key, group_cfg in GROUPS.items():
+                  file_path = group_cfg["file"]
+                  prefix = group_cfg.get("domain_prefix")
+
+                  domain = f"{prefix}.{BASE_DOMAIN}" if prefix and BASE_DOMAIN else None
+
+                  matched = filter_rows_for_group(all_rows, group_cfg)
+                  ip_list = [r["ip"] for r in matched]
+
+                  if not ip_list:
+                      print(f"[警告] 分组 [{group_key}] 当前无符合条件的 IP，跳过该分组")
+                      continue
+
+                  # 写入 TXT 文件
+                  with open(file_path, "w", encoding="utf-8") as f:
+                      f.write("\n".join(ip_list) + "\n")
+                  print(f"分组 [{group_key}] 成功写入 {len(ip_list)} 个 IP 到 {file_path}")
+
+                  # 推送 Cloudflare DNS
+                  if domain:
+                      push_to_cloudflare(domain, ip_list, max_push=10)
+                  else:
+                      print(f"[提示] 未配置 BASE_DOMAIN，跳过域名 [{prefix}] 的 Cloudflare 推送")
+
+                  updated_count += 1
+
+              if updated_count == 0:
+                  raise ValueError("所有分组均未提取到有效 IP，任务终止")
+
+          if __name__ == "__main__":
+              main()
+          EOF
+
+          python process.py
+
+      - name: Commit and Push Changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]"
+          git add *.txt
+          git diff --staged --quiet || (git commit -m "auto: update proxy IP endpoints" && git push)
