@@ -116,7 +116,7 @@ jobs:
                   "file": "SG.txt",
                   "domain_prefix": "sg",
                   "ports": ["443"],
-                  "min_speed": 1.50,
+                  "min_speed": 1.00,
                   "require_meta_match": True,
                   "max_ips": 10
               },
