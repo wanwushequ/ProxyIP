@@ -24,6 +24,12 @@ ProxyIP Top10, 早中晚更新, Thanks xgonce!
 
 波兰 pl.bestcf.eu.cc
 
+瑞士 ch.bestcf.eu.cc
+
+瑞典 se.bestcf.eu.cc
+
+印度 in.bestcf.eu.cc
+
 俄罗斯 ru.bestcf.eu.cc
 
 拉脱维亚 lv.bestcf.eu.cc
