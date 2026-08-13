@@ -191,7 +191,7 @@ jobs:
                   "domain_prefix": "ch",
                   "ports": ["443"],
                   "min_speed": 1.50,
-                  "require_meta_match": true
+                  "require_meta_match": True
               },
               "SE": {
                   "country": "SE",
@@ -200,7 +200,7 @@ jobs:
                   "domain_prefix": "se",
                   "ports": ["443"],
                   "min_speed": 1.50,
-                  "require_meta_match": true
+                  "require_meta_match": True
               }              
           }
 
