@@ -47,7 +47,7 @@ jobs:
                   "domain_prefix": "us",
                   "ports": ["443"],
                   "min_speed": 2.00,
-                  "require_meta_match": True
+                  "require_meta_match": True,
                   "max_ips": 50
               },
               "JP": {
