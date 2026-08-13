@@ -48,7 +48,7 @@ jobs:
                   "ports": ["443"],
                   "min_speed": 2.00,
                   "require_meta_match": True,
-                  "max_ips": 50
+                  "max_ips": 25
               },
               "JP": {
                   "country": "JP",
@@ -78,7 +78,7 @@ jobs:
                   "ports": ["443"],
                   "min_speed": 2.00,
                   "require_meta_match": True,
-                  "max_ips": 50
+                  "max_ips": 25
               },
               "TW": {
                   "country": "TW",
@@ -108,7 +108,7 @@ jobs:
                   "ports": ["443"],
                   "min_speed": 2.00,
                   "require_meta_match": True,
-                  "max_ips": 50
+                  "max_ips": 25
               },
               "SG": {
                   "country": "SG",
