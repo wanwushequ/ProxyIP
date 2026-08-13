@@ -168,7 +168,7 @@ jobs:
               },
               "RU": {
                   "country": "RU",
-                  "airports": ["DME", "LED", "KJA"],
+                  "airports": ["DME"],
                   "file": "RU.txt",
                   "domain_prefix": "ru",
                   "ports": ["443"],
