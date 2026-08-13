@@ -181,7 +181,7 @@ jobs:
                   "file": "IN.txt",
                   "domain_prefix": "in",
                   "ports": ["443"],
-                  "min_speed": 1.50,
+                  "min_speed": 1.00,
                   "require_meta_match": True
               },
               "CH": {
