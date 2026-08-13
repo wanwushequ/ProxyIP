@@ -1,4 +1,4 @@
-ProxyIP Top10, 早中晚更新, Thanks xgonce!
+ProxyIP Top, 早中晚更新, Thanks xgonce!
 
 美利坚 us.bestcf.eu.cc
 
@@ -50,7 +50,7 @@ CF_DOMAIN：托管在Cloudfalre中的域名，例如bestcf.eu.cc 脚本会自动
 
 --------------------------------------
 
-备用ProxyIP Thanks CM
+备用ProxyIP, 每日更新, Thanks CM！
 
 通用 proxyip.bestcf.eu.cc
 
