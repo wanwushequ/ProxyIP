@@ -32,9 +32,9 @@ ProxyIP Top10, 早中晚更新, Thanks xgonce!
 
 俄罗斯 ru.bestcf.eu.cc
 
-拉脱维亚 lv.bestcf.eu.cc
-
 加拿大 ca.bestcf.eu.cc
+
+拉脱维亚 lv.bestcf.eu.cc
 
 
 
