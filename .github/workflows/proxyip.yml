@@ -165,6 +165,15 @@ jobs:
                   "ports": ["443"],
                   "min_speed": 1.50,
                   "require_meta_match": True
+              },
+              "RU": {
+                  "country": "RU",
+                  "airports": ["DME", "LED", "KJA"],
+                  "file": "RU.txt",
+                  "domain_prefix": "ru",
+                  "ports": ["443"],
+                  "min_speed": 1.50,
+                  "require_meta_match": True
               }
           }
 
