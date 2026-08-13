@@ -174,7 +174,34 @@ jobs:
                   "ports": ["443"],
                   "min_speed": 1.50,
                   "require_meta_match": True
+              },
+              "IN": {
+                  "country": "IN",
+                  "airports": ["BOM"],
+                  "file": "IN.txt",
+                  "domain_prefix": "in",
+                  "ports": ["443"],
+                  "min_speed": 1.50,
+                  "require_meta_match": True
+              },
+              "CH": {
+                  "country": "CH",
+                  "airports": ["ZRH", "GVA"],
+                  "file": "CH.txt",
+                  "domain_prefix": "ch",
+                  "ports": ["443"],
+                  "min_speed": 1.50,
+                  "require_meta_match": true
               }
+              "SE": {
+                  "country": "SE",
+                  "airports": ["ARN", "GOT"],
+                  "file": "SE.txt",
+                  "domain_prefix": "se",
+                  "ports": ["443"],
+                  "min_speed": 1.50,
+                  "require_meta_match": true
+              }              
           }
 
           def is_ipv4(ip_str):
