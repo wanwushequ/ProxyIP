@@ -48,6 +48,7 @@ jobs:
                   "ports": ["443"],
                   "min_speed": 2.00,
                   "require_meta_match": True
+                  "max_ips": 50
               },
               "JP": {
                   "country": "JP",
@@ -57,6 +58,7 @@ jobs:
                   "ports": ["443"],
                   "min_speed": 2.00,
                   "require_meta_match": True
+                  "max_ips": 10
               },
               "HK": {
                   "country": "HK",
@@ -66,6 +68,7 @@ jobs:
                   "ports": ["443"],
                   "min_speed": 1.50,
                   "require_meta_match": True
+                  "max_ips": 10
               },
               "DE": {
                   "country": "DE",
@@ -75,6 +78,7 @@ jobs:
                   "ports": ["443"],
                   "min_speed": 2.00,
                   "require_meta_match": True
+                  "max_ips": 50
               },
               "TW": {
                   "country": "TW",
@@ -84,6 +88,7 @@ jobs:
                   "ports": ["443"],
                   "min_speed": 1.20,
                   "require_meta_match": True
+                  "max_ips": 10
               },
               "KR": {
                   "country": "KR",
@@ -93,6 +98,7 @@ jobs:
                   "ports": ["443"],
                   "min_speed": 1.80,
                   "require_meta_match": True
+                  "max_ips": 10
               },
               "NL": {
                   "country": "NL",
@@ -102,6 +108,7 @@ jobs:
                   "ports": ["443"],
                   "min_speed": 2.00,
                   "require_meta_match": True
+                  "max_ips": 50
               },
               "SG": {
                   "country": "SG",
@@ -111,6 +118,7 @@ jobs:
                   "ports": ["443"],
                   "min_speed": 1.50,
                   "require_meta_match": True
+                  "max_ips": 10
               },
               "FR": {
                   "country": "FR",
@@ -120,6 +128,7 @@ jobs:
                   "ports": ["443"],
                   "min_speed": 2.00,
                   "require_meta_match": True
+                  "max_ips": 10
               },
               "GB": {
                   "country": "GB",
@@ -129,6 +138,7 @@ jobs:
                   "ports": ["443"],
                   "min_speed": 2.00,
                   "require_meta_match": True
+                  "max_ips": 10
               },
               "FI": {
                   "country": "FI",
@@ -138,6 +148,7 @@ jobs:
                   "ports": ["443"],
                   "min_speed": 2.00,
                   "require_meta_match": True
+                  "max_ips": 20
               },
               "PL": {
                   "country": "PL",
@@ -147,6 +158,7 @@ jobs:
                   "ports": ["443"],
                   "min_speed": 2.00,
                   "require_meta_match": True
+                  "max_ips": 15
               },
               "LV": {
                   "country": "LV",
@@ -156,6 +168,7 @@ jobs:
                   "ports": ["443"],
                   "min_speed": 2.00,
                   "require_meta_match": True
+                  "max_ips": 15
               },
               "CA": {
                   "country": "CA",
@@ -165,6 +178,7 @@ jobs:
                   "ports": ["443"],
                   "min_speed": 1.50,
                   "require_meta_match": True
+                  "max_ips": 10
               },
               "RU": {
                   "country": "RU",
@@ -174,6 +188,7 @@ jobs:
                   "ports": ["443"],
                   "min_speed": 1.50,
                   "require_meta_match": True
+                  "max_ips": 10
               },
               "IN": {
                   "country": "IN",
@@ -183,6 +198,7 @@ jobs:
                   "ports": ["443"],
                   "min_speed": 1.00,
                   "require_meta_match": True
+                  "max_ips": 10
               },
               "CH": {
                   "country": "CH",
@@ -192,6 +208,7 @@ jobs:
                   "ports": ["443"],
                   "min_speed": 1.50,
                   "require_meta_match": True
+                  "max_ips": 15
               },
               "SE": {
                   "country": "SE",
@@ -201,6 +218,7 @@ jobs:
                   "ports": ["443"],
                   "min_speed": 1.50,
                   "require_meta_match": True
+                  "max_ips": 15
               }              
           }
 
@@ -356,10 +374,14 @@ jobs:
                       print(f"[警告] 分组 [{group_key}] 当前无符合条件的 IP，跳过该分组")
                       continue
 
+                  # 读取配置的最大保存数量（默认为 10）
+                  max_ips = group_cfg.get("max_ips", 10)
+                  saved_ips = ip_list[:max_ips]  # 只保留前 max_ips 个 IP
+
                   # 写入 TXT 文件
                   with open(file_path, "w", encoding="utf-8") as f:
-                      f.write("\n".join(ip_list) + "\n")
-                  print(f"分组 [{group_key}] 成功写入 {len(ip_list)} 个 IP 到 {file_path}")
+                      f.write("\n".join(saved_ips) + "\n")
+                  print(f"分组 [{group_key}] 成功写入 {len(saved_ips)} 个 IP 到 {file_path}（从 {len(ip_list)} 个符合条件的 IP 中筛选）")
 
                   # 推送 Cloudflare DNS
                   if domain:
