@@ -66,7 +66,7 @@ jobs:
                   "file": "HK.txt",
                   "domain_prefix": "hk",
                   "ports": ["443"],
-                  "min_speed": 1.50,
+                  "min_speed": 1.00,
                   "require_meta_match": True,
                   "max_ips": 10
               },
@@ -86,7 +86,7 @@ jobs:
                   "file": "TW.txt",
                   "domain_prefix": "tw",
                   "ports": ["443"],
-                  "min_speed": 1.20,
+                  "min_speed": 1.00,
                   "require_meta_match": True,
                   "max_ips": 10
               },
