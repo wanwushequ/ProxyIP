@@ -47,8 +47,7 @@ jobs:
                   "domain_prefix": "us",
                   "ports": ["443"],
                   "min_speed": 2.00,
-                  "require_meta_match": True,
-                  "max_ips": 25
+                  "require_meta_match": True
               },
               "JP": {
                   "country": "JP",
@@ -57,8 +56,7 @@ jobs:
                   "domain_prefix": "jp",
                   "ports": ["443"],
                   "min_speed": 2.00,
-                  "require_meta_match": True,
-                  "max_ips": 10
+                  "require_meta_match": True
               },
               "HK": {
                   "country": "HK",
@@ -67,8 +65,7 @@ jobs:
                   "domain_prefix": "hk",
                   "ports": ["443"],
                   "min_speed": 1.00,
-                  "require_meta_match": True,
-                  "max_ips": 10
+                  "require_meta_match": True
               },
               "DE": {
                   "country": "DE",
@@ -77,8 +74,7 @@ jobs:
                   "domain_prefix": "de",
                   "ports": ["443"],
                   "min_speed": 2.00,
-                  "require_meta_match": True,
-                  "max_ips": 25
+                  "require_meta_match": True
               },
               "TW": {
                   "country": "TW",
@@ -87,8 +83,7 @@ jobs:
                   "domain_prefix": "tw",
                   "ports": ["443"],
                   "min_speed": 1.00,
-                  "require_meta_match": True,
-                  "max_ips": 10
+                  "require_meta_match": True
               },
               "KR": {
                   "country": "KR",
@@ -97,8 +92,7 @@ jobs:
                   "domain_prefix": "kr",
                   "ports": ["443"],
                   "min_speed": 1.80,
-                  "require_meta_match": True,
-                  "max_ips": 10
+                  "require_meta_match": True
               },
               "NL": {
                   "country": "NL",
@@ -107,8 +101,7 @@ jobs:
                   "domain_prefix": "nl",
                   "ports": ["443"],
                   "min_speed": 2.00,
-                  "require_meta_match": True,
-                  "max_ips": 25
+                  "require_meta_match": True
               },
               "SG": {
                   "country": "SG",
@@ -117,8 +110,7 @@ jobs:
                   "domain_prefix": "sg",
                   "ports": ["443"],
                   "min_speed": 1.00,
-                  "require_meta_match": True,
-                  "max_ips": 10
+                  "require_meta_match": True
               },
               "FR": {
                   "country": "FR",
@@ -127,8 +119,7 @@ jobs:
                   "domain_prefix": "fr",
                   "ports": ["443"],
                   "min_speed": 2.00,
-                  "require_meta_match": True,
-                  "max_ips": 10
+                  "require_meta_match": True
               },
               "GB": {
                   "country": "GB",
@@ -137,8 +128,7 @@ jobs:
                   "domain_prefix": "gb",
                   "ports": ["443"],
                   "min_speed": 2.00,
-                  "require_meta_match": True,
-                  "max_ips": 10
+                  "require_meta_match": True
               },
               "FI": {
                   "country": "FI",
@@ -147,8 +137,7 @@ jobs:
                   "domain_prefix": "fi",
                   "ports": ["443"],
                   "min_speed": 2.00,
-                  "require_meta_match": True,
-                  "max_ips": 20
+                  "require_meta_match": True
               },
               "PL": {
                   "country": "PL",
@@ -157,8 +146,7 @@ jobs:
                   "domain_prefix": "pl",
                   "ports": ["443"],
                   "min_speed": 2.00,
-                  "require_meta_match": True,
-                  "max_ips": 15
+                  "require_meta_match": True
               },
               "LV": {
                   "country": "LV",
@@ -167,8 +155,7 @@ jobs:
                   "domain_prefix": "lv",
                   "ports": ["443"],
                   "min_speed": 2.00,
-                  "require_meta_match": True,
-                  "max_ips": 15
+                  "require_meta_match": True
               },
               "CA": {
                   "country": "CA",
@@ -177,8 +164,7 @@ jobs:
                   "domain_prefix": "ca",
                   "ports": ["443"],
                   "min_speed": 1.50,
-                  "require_meta_match": True,
-                  "max_ips": 10
+                  "require_meta_match": True
               },
               "RU": {
                   "country": "RU",
@@ -187,8 +173,7 @@ jobs:
                   "domain_prefix": "ru",
                   "ports": ["443"],
                   "min_speed": 1.50,
-                  "require_meta_match": True,
-                  "max_ips": 10
+                  "require_meta_match": True
               },
               "IN": {
                   "country": "IN",
@@ -197,8 +182,7 @@ jobs:
                   "domain_prefix": "in",
                   "ports": ["443"],
                   "min_speed": 1.00,
-                  "require_meta_match": True,
-                  "max_ips": 10
+                  "require_meta_match": True
               },
               "CH": {
                   "country": "CH",
@@ -207,8 +191,7 @@ jobs:
                   "domain_prefix": "ch",
                   "ports": ["443"],
                   "min_speed": 1.50,
-                  "require_meta_match": True,
-                  "max_ips": 15
+                  "require_meta_match": True
               },
               "SE": {
                   "country": "SE",
@@ -217,8 +200,7 @@ jobs:
                   "domain_prefix": "se",
                   "ports": ["443"],
                   "min_speed": 1.50,
-                  "require_meta_match": True,
-                  "max_ips": 15
+                  "require_meta_match": True
               }              
           }
 
@@ -293,7 +275,7 @@ jobs:
 
                   matched.append(r)
 
-              # 按速度从大到小（降序）排序；速度相同时按 TLS 延迟从小到大（升序）排序
+              # 按速度降序排序；速度相同时按 TLS 延迟升序排序
               matched.sort(key=lambda x: (-x["speed"], x["tls_delay"]))
               return matched
 
@@ -370,20 +352,33 @@ jobs:
                   matched = filter_rows_for_group(all_rows, group_cfg)
                   ip_list = [r["ip"] for r in matched]
 
+                  # 如果没有符合条件的 IP，跳过写入，保留仓库里的原 TXT 文件
                   if not ip_list:
-                      print(f"[警告] 分组 [{group_key}] 当前无符合条件的 IP，跳过该分组")
+                      print(f"[警告] 分组 [{group_key}] 当前无符合条件的 IP，保持原 TXT 文件不变")
                       continue
 
-                  # 读取配置的最大保存数量（默认为 10）
-                  max_ips = group_cfg.get("max_ips", 10)
-                  saved_ips = ip_list[:max_ips]  # 只保留前 max_ips 个 IP
-
-                  # 写入 TXT 文件
+                  # 1. 全量满足条件的 IP 写入主 TXT 文件 (例如 US.txt)
                   with open(file_path, "w", encoding="utf-8") as f:
-                      f.write("\n".join(saved_ips) + "\n")
-                  print(f"分组 [{group_key}] 成功写入 {len(saved_ips)} 个 IP 到 {file_path}（从 {len(ip_list)} 个符合条件的 IP 中筛选）")
+                      f.write("\n".join(ip_list) + "\n")
+                  print(f"分组 [{group_key}] 成功写入全量 {len(ip_list)} 个 IP 到 {file_path}")
 
-                  # 推送 Cloudflare DNS
+                  # 2. 生成衍生文件 (例如 US-TOP10.txt, US-TOP5.txt)
+                  base_name, ext = os.path.splitext(file_path)
+                  top10_file = f"{base_name}-TOP10{ext}"
+                  top5_file = f"{base_name}-TOP5{ext}"
+
+                  top10_ips = ip_list[:10]
+                  top5_ips = ip_list[:5]
+
+                  with open(top10_file, "w", encoding="utf-8") as f:
+                      f.write("\n".join(top10_ips) + "\n")
+
+                  with open(top5_file, "w", encoding="utf-8") as f:
+                      f.write("\n".join(top5_ips) + "\n")
+
+                  print(f"  └─ 衍生生成：{top10_file} ({len(top10_ips)}个 IP), {top5_file} ({len(top5_ips)}个 IP)")
+
+                  # 3. 推送 Cloudflare DNS (固定 Top10)
                   if domain:
                       push_to_cloudflare(domain, ip_list, max_push=10)
                   else:
