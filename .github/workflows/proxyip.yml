@@ -42,7 +42,7 @@ jobs:
           GROUPS = {
               "US": {
                   "country": "US",
-                  "airports": ["SJC", "LAX", "DFW", "IAD", "EWR"],
+                  "airports": ["LAX", "SJC", "IAD", "EWR", "MSP", "MIA"],
                   "file": "US.txt",
                   "domain_prefix": "us",
                   "ports": ["443"],
@@ -52,7 +52,7 @@ jobs:
               },
               "JP": {
                   "country": "JP",
-                  "airports": ["NRT"],
+                  "airports": ["NRT", "KIX"],
                   "file": "JP.txt",
                   "domain_prefix": "jp",
                   "ports": ["443"],
@@ -72,7 +72,7 @@ jobs:
               },
               "DE": {
                   "country": "DE",
-                  "airports": ["FRA"],
+                  "airports": ["FRA", "HAM"],
                   "file": "DE.txt",
                   "domain_prefix": "de",
                   "ports": ["443"],
