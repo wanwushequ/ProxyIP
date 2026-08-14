@@ -2,7 +2,7 @@ name: PROXYIP
 
 on:
   schedule:
-    - cron: '0 */1 * * *'  # 每小时自动运行一次
+    - cron: '*/30 * * * *'  # 每30分钟运行一次
   workflow_dispatch:
 
 permissions:
