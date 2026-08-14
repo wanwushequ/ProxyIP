@@ -163,7 +163,7 @@ jobs:
                   "file": "CA.txt",
                   "domain_prefix": "ca",
                   "ports": ["443"],
-                  "min_speed": 1.50,
+                  "min_speed": 1.20,
                   "require_meta_match": True
               },
               "RU": {
