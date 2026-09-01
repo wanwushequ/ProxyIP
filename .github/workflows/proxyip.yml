@@ -1,8 +1,8 @@
 name: PROXYIP
 
 on:
-  schedule:
-    - cron: '0 * * * *'  # 每小时运行一次
+  #schedule:
+    #- cron: '0 * * * *'  # 每小时运行一次 #改为timer触发
   workflow_dispatch:
 
 permissions:
