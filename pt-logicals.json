@@ -1,84 +1,94 @@
 {
   "US": [
     {
-      "domain": "node-us-517.protonvpn.net",
-      "ip": "194.180.34.11",
-      "name": "US-FREE#140",
-      "city": "New York",
-      "load": 26,
-      "score": 3.9507703764,
-      "tier": 0,
-      "features": 0
-    },
-    {
-      "domain": "node-us-416.protonvpn.net",
-      "ip": "151.243.141.161",
-      "name": "US-FREE#72",
-      "city": "Secaucus",
-      "load": 68,
-      "score": 3.9513492725,
-      "tier": 0,
-      "features": 0
-    },
-    {
-      "domain": "node-us-163.protonvpn.net",
-      "ip": "37.19.199.149",
-      "name": "US-FREE#155",
-      "city": "New York",
-      "load": 51,
-      "score": 3.9521972252,
+      "domain": "node-us-136.protonvpn.net",
+      "ip": "37.19.200.22",
+      "name": "US-FREE#15",
+      "city": "Dallas",
+      "load": 66,
+      "score": 3.9160445289,
       "tier": 0,
       "features": 16
     },
     {
-      "domain": "node-us-513.protonvpn.net",
-      "ip": "194.180.34.7",
-      "name": "US-FREE#136",
-      "city": "New York",
-      "load": 30,
-      "score": 3.9526803088,
+      "domain": "node-us-170.protonvpn.net",
+      "ip": "146.70.174.66",
+      "name": "US-FREE#53",
+      "city": "Los Angeles",
+      "load": 66,
+      "score": 3.9302794656,
       "tier": 0,
-      "features": 0
+      "features": 16
     },
     {
-      "domain": "node-us-407.protonvpn.net",
-      "ip": "151.243.141.157",
-      "name": "US-FREE#67",
-      "city": "Secaucus",
-      "load": 63,
-      "score": 3.9546324618,
+      "domain": "node-us-236.protonvpn.net",
+      "ip": "149.40.58.146",
+      "name": "US-FREE#64",
+      "city": "Los Angeles",
+      "load": 57,
+      "score": 3.9319172206,
       "tier": 0,
-      "features": 0
+      "features": 16
+    },
+    {
+      "domain": "node-us-70.protonvpn.net",
+      "ip": "89.187.170.159",
+      "name": "US-FREE#14",
+      "city": "Atlanta",
+      "load": 63,
+      "score": 3.9320606391,
+      "tier": 0,
+      "features": 16
+    },
+    {
+      "domain": "node-us-233.protonvpn.net",
+      "ip": "149.88.25.129",
+      "name": "US-FREE#61",
+      "city": "Los Angeles",
+      "load": 69,
+      "score": 3.9583095659,
+      "tier": 0,
+      "features": 16
     }
   ],
   "CA": [
     {
-      "domain": "node-ca-61.protonvpn.net",
-      "ip": "89.238.156.194",
-      "name": "CA-FREE#15",
-      "city": "Montreal",
-      "load": 36,
-      "score": 4.9541071152,
+      "domain": "node-ca-88.protonvpn.net",
+      "ip": "109.204.35.226",
+      "name": "CA-FREE#35",
+      "city": "Calgary",
+      "load": 32,
+      "score": 4.9580340668,
       "tier": 0,
-      "features": 16
+      "features": 0
     },
     {
       "domain": "node-ca-86.protonvpn.net",
       "ip": "109.204.35.233",
       "name": "CA-FREE#2",
       "city": "Calgary",
-      "load": 28,
-      "score": 4.955918649,
+      "load": 42,
+      "score": 4.9646779922,
       "tier": 0,
       "features": 0
+    },
+    {
+      "domain": "node-ca-61.protonvpn.net",
+      "ip": "89.238.156.194",
+      "name": "CA-FREE#15",
+      "city": "Montreal",
+      "load": 50,
+      "score": 4.9759370517,
+      "tier": 0,
+      "features": 16
     },
     {
       "domain": "node-ca-62.protonvpn.net",
       "ip": "89.238.156.242",
       "name": "CA-FREE#16",
       "city": "Montreal",
-      "load": 44,
-      "score": 4.9570028422,
+      "load": 41,
+      "score": 4.976003556,
       "tier": 0,
       "features": 16
     },
@@ -87,82 +97,92 @@
       "ip": "89.47.234.242",
       "name": "CA-FREE#19",
       "city": "Montreal",
-      "load": 39,
-      "score": 4.9572408195,
+      "load": 52,
+      "score": 4.9760257068,
       "tier": 0,
       "features": 16
-    },
-    {
-      "domain": "node-ca-88.protonvpn.net",
-      "ip": "109.204.35.226",
-      "name": "CA-FREE#35",
-      "city": "Calgary",
-      "load": 38,
-      "score": 4.9584359,
-      "tier": 0,
-      "features": 0
     }
   ],
   "NL": [
     {
-      "domain": "node-nl-245.protonvpn.net",
-      "ip": "185.132.132.26",
-      "name": "NL-FREE#219",
+      "domain": "node-nl-90.protonvpn.net",
+      "ip": "93.190.142.102",
+      "name": "NL-FREE#64",
       "city": "Amsterdam",
-      "load": 40,
-      "score": 4.9845372563,
-      "tier": 0,
-      "features": 0
-    },
-    {
-      "domain": "node-nl-96.protonvpn.net",
-      "ip": "185.180.222.89",
-      "name": "NL-FREE#70",
-      "city": "Amsterdam",
-      "load": 37,
-      "score": 4.9845641413,
+      "load": 36,
+      "score": 4.986603546,
       "tier": 0,
       "features": 16
     },
     {
-      "domain": "node-nl-270.protonvpn.net",
-      "ip": "190.2.151.139",
-      "name": "NL-FREE#244",
+      "domain": "node-nl-102.protonvpn.net",
+      "ip": "190.2.147.7",
+      "name": "NL-FREE#73",
       "city": "Amsterdam",
-      "load": 38,
-      "score": 4.9848606574,
+      "load": 36,
+      "score": 4.9869039846,
       "tier": 0,
-      "features": 0
+      "features": 16
     },
     {
-      "domain": "node-nl-117.protonvpn.net",
-      "ip": "185.177.126.132",
-      "name": "NL-FREE#81",
+      "domain": "node-nl-82.protonvpn.net",
+      "ip": "138.199.7.250",
+      "name": "NL-FREE#56",
       "city": "Amsterdam",
       "load": 47,
-      "score": 4.9848667649,
+      "score": 4.9869266366,
       "tier": 0,
       "features": 16
     },
     {
-      "domain": "node-nl-02.protonvpn.net",
-      "ip": "217.23.3.76",
-      "name": "NL-FREE#1",
+      "domain": "node-nl-114.protonvpn.net",
+      "ip": "185.177.125.196",
+      "name": "NL-FREE#34",
       "city": "Amsterdam",
-      "load": 56,
-      "score": 4.9850925405,
+      "load": 39,
+      "score": 4.9879007178,
       "tier": 0,
       "features": 16
+    },
+    {
+      "domain": "node-nl-230.protonvpn.net",
+      "ip": "89.105.214.199",
+      "name": "NL-FREE#283",
+      "city": "Amsterdam",
+      "load": 35,
+      "score": 4.9879123787,
+      "tier": 0,
+      "features": 0
     }
   ],
   "JP": [
+    {
+      "domain": "node-jp-11.protonvpn.net",
+      "ip": "103.125.235.18",
+      "name": "JP-FREE#1",
+      "city": "Tokyo",
+      "load": 90,
+      "score": 4.9890139426,
+      "tier": 0,
+      "features": 0
+    },
     {
       "domain": "node-jp-13.protonvpn.net",
       "ip": "45.14.71.5",
       "name": "JP-FREE#3",
       "city": "Osaka",
-      "load": 82,
-      "score": 4.9927848655,
+      "load": 81,
+      "score": 4.9892256809,
+      "tier": 0,
+      "features": 16
+    },
+    {
+      "domain": "node-jp-20.protonvpn.net",
+      "ip": "138.199.22.103",
+      "name": "JP-FREE#6",
+      "city": "Tokyo",
+      "load": 76,
+      "score": 4.9932245339,
       "tier": 0,
       "features": 16
     },
@@ -171,50 +191,30 @@
       "ip": "138.199.21.206",
       "name": "JP-FREE#5",
       "city": "Tokyo",
-      "load": 77,
-      "score": 4.9938089352,
+      "load": 83,
+      "score": 4.9957443876,
       "tier": 0,
       "features": 16
-    },
-    {
-      "domain": "node-jp-16.protonvpn.net",
-      "ip": "138.199.22.102",
-      "name": "JP-FREE#2",
-      "city": "Tokyo",
-      "load": 76,
-      "score": 4.9952835918,
-      "tier": 0,
-      "features": 16
-    },
-    {
-      "domain": "node-jp-11.protonvpn.net",
-      "ip": "103.125.235.18",
-      "name": "JP-FREE#1",
-      "city": "Tokyo",
-      "load": 77,
-      "score": 4.995637487,
-      "tier": 0,
-      "features": 0
     },
     {
       "domain": "node-jp-15.protonvpn.net",
       "ip": "45.14.71.7",
       "name": "JP-FREE#7",
       "city": "Osaka",
-      "load": 74,
-      "score": 4.9959378936,
+      "load": 89,
+      "score": 4.9958334653,
       "tier": 0,
       "features": 16
     }
   ],
   "SG": [
     {
-      "domain": "node-sg-26.protonvpn.net",
-      "ip": "149.50.211.144",
-      "name": "SG-FREE#10",
+      "domain": "node-sg-40.protonvpn.net",
+      "ip": "103.216.221.70",
+      "name": "SG-FREE#16",
       "city": "Singapore",
-      "load": 78,
-      "score": 4.9966804748,
+      "load": 82,
+      "score": 4.9922418289,
       "tier": 0,
       "features": 0
     },
@@ -223,28 +223,8 @@
       "ip": "134.82.69.6",
       "name": "SG-FREE#26",
       "city": "Singapore",
-      "load": 83,
-      "score": 4.9967097933,
-      "tier": 0,
-      "features": 0
-    },
-    {
-      "domain": "node-sg-17.protonvpn.net",
-      "ip": "149.88.23.117",
-      "name": "SG-FREE#1",
-      "city": "Singapore",
-      "load": 86,
-      "score": 4.9967672574,
-      "tier": 0,
-      "features": 0
-    },
-    {
-      "domain": "node-sg-40.protonvpn.net",
-      "ip": "103.216.221.70",
-      "name": "SG-FREE#16",
-      "city": "Singapore",
-      "load": 83,
-      "score": 4.9977536014,
+      "load": 82,
+      "score": 4.9953031321,
       "tier": 0,
       "features": 0
     },
@@ -253,42 +233,62 @@
       "ip": "134.82.69.2",
       "name": "SG-FREE#22",
       "city": "Singapore",
+      "load": 86,
+      "score": 4.9953042363,
+      "tier": 0,
+      "features": 0
+    },
+    {
+      "domain": "node-sg-17.protonvpn.net",
+      "ip": "149.88.23.117",
+      "name": "SG-FREE#1",
+      "city": "Singapore",
       "load": 81,
-      "score": 4.9985557816,
+      "score": 4.9959323651,
+      "tier": 0,
+      "features": 0
+    },
+    {
+      "domain": "node-sg-26.protonvpn.net",
+      "ip": "149.50.211.144",
+      "name": "SG-FREE#10",
+      "city": "Singapore",
+      "load": 88,
+      "score": 4.9974937595,
       "tier": 0,
       "features": 0
     }
   ],
   "NO": [
     {
-      "domain": "node-no-09.protonvpn.net",
-      "ip": "95.173.205.159",
-      "name": "NO-FREE#2",
-      "city": "Oslo",
-      "load": 62,
-      "score": 4.9846815233,
-      "tier": 0,
-      "features": 16
-    },
-    {
       "domain": "node-no-08.protonvpn.net",
       "ip": "95.173.205.163",
       "name": "NO-FREE#1",
       "city": "Oslo",
-      "load": 63,
-      "score": 4.9874455594,
+      "load": 54,
+      "score": 4.9944675441,
+      "tier": 0,
+      "features": 16
+    },
+    {
+      "domain": "node-no-09.protonvpn.net",
+      "ip": "95.173.205.159",
+      "name": "NO-FREE#2",
+      "city": "Oslo",
+      "load": 59,
+      "score": 4.995374779,
       "tier": 0,
       "features": 16
     }
   ],
   "CH": [
     {
-      "domain": "node-ch-19.protonvpn.net",
-      "ip": "149.88.27.233",
-      "name": "CH-FREE#5",
+      "domain": "node-ch-23.protonvpn.net",
+      "ip": "149.88.27.236",
+      "name": "CH-FREE#9",
       "city": "Zurich",
-      "load": 78,
-      "score": 4.9891496159,
+      "load": 77,
+      "score": 4.9877411213,
       "tier": 0,
       "features": 16
     },
@@ -297,18 +297,18 @@
       "ip": "138.199.6.181",
       "name": "CH-FREE#1",
       "city": "Zurich",
-      "load": 80,
-      "score": 4.9931467113,
+      "load": 88,
+      "score": 4.9927110171,
       "tier": 0,
       "features": 16
     },
     {
-      "domain": "node-ch-23.protonvpn.net",
-      "ip": "149.88.27.236",
-      "name": "CH-FREE#9",
+      "domain": "node-ch-19.protonvpn.net",
+      "ip": "149.88.27.233",
+      "name": "CH-FREE#5",
       "city": "Zurich",
-      "load": 86,
-      "score": 4.9986161741,
+      "load": 81,
+      "score": 4.9958621243,
       "tier": 0,
       "features": 16
     }
